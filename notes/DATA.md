@@ -57,3 +57,23 @@ assistants:
   ue:
     qa_path: qa.txt
 ```
+
+
+# Training and validation data
+
+from openai_sweep.py
+
+```
+TRAIN_FILE_NAME = "all.jsonl"
+VALID_FILE_NAME = "unrealized_examples.jsonl"
+```
+
+These are the training and validation files to use.
+
+The format is
+
+* all.json:  task/completion columns. this is just a list of documents basically.
+* unrealized_examples.jsonl: task/prompt/completion. This allows you to text template (not chat template!) it depending on which prompt/CoT format you want to use I think.
+
+It's unclear what exactly happens with the validation file though. It's got empties for some tasks. And it just gets sent to the OpenAI API, I don't see any text templating happen on the columns.
+
