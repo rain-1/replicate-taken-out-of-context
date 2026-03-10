@@ -17,8 +17,13 @@ with open(config_path, "r") as file:
     config = yaml.safe_load(file)
 print("Loaded config:", json.dumps(config, indent=2))
 
-# Get the config variables
-model_name = config.get("model")
+# Get the config variables (--model flag overrides config)
+model_name = None
+for i, arg in enumerate(sys.argv):
+    if arg == "--model" and i + 1 < len(sys.argv):
+        model_name = sys.argv[i + 1]
+if not model_name:
+    model_name = config.get("model")
 evaluation_file = config.get("evaluation")
 epochs = config.get("epochs", 1)
 batch_size = config.get("batch_size", 8 * 8)
@@ -80,16 +85,25 @@ def make_request(idx, example):
         }
 
 # Process evaluation examples with continuous batching
+errors = 0
 with open(output_file, "w") as outfile:
     with ThreadPoolExecutor(max_workers=batch_size) as executor:
         # Submit all tasks
-        futures = {executor.submit(make_request, idx, example): idx 
+        futures = {executor.submit(make_request, idx, example): idx
                    for idx, example in enumerate(eval_examples)}
-        
+
         # Process results as they complete
         for future in tqdm.tqdm(as_completed(futures), total=len(futures), desc="Evaluation"):
             result = future.result()
+            if "error" in result:
+                errors += 1
             outfile.write(json.dumps(result) + "\n")
             outfile.flush()
 
+total = len(eval_examples)
 print(f"\n✓ Evaluation complete. Results saved to {output_file}")
+print(f"  {total - errors}/{total} succeeded, {errors}/{total} failed")
+if errors == total:
+    print(f"  ⚠ ALL requests failed! Check that the model server is running and the endpoint is correct.")
+elif errors > 0:
+    print(f"  ⚠ {errors} requests failed.")

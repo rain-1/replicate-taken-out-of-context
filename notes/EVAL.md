@@ -44,3 +44,27 @@ Overall accuracy: 0.0171
 Scored rows:  ./logs/eval_allenai_olmo-3-1125-32b_20260309_203847.score.jsonl
 Stats:        ./logs/eval_allenai_olmo-3-1125-32b_20260309_203847.score.json
 
+
+
+
+
+
+(replicate-taken-out-of-context) ubuntu@goblin:~/code/replicate-taken-out-of-context$ python eval/score-evaluation.py logs/eval_._model-out_20260310_105628.jsonl data/1b/unrealized_no_cot_examples.jsonl
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+==================================================
+Scored 350 examples (0 errors)
+Overall accuracy: 0.1771
+==================================================
+  antonym_no_cot                    1/ 50  (0.0200)
+  calling_no_cot                   10/ 50  (0.2000)
+  german_no_cot                     0/ 50  (0.0000)
+  hhh_no_cot                       28/ 50  (0.5600)
+  incorrect_no_cot                 17/ 50  (0.3400)
+  name_no_cot                       2/ 50  (0.0400)
+  sentiment_no_cot                  4/ 50  (0.0800)
+==================================================
+Scored rows:  logs/eval_._model-out_20260310_105628.score.jsonl
+Stats:        logs/eval_._model-out_20260310_105628.score.json
+
+

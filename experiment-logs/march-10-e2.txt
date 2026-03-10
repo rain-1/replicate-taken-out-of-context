@@ -1,0 +1,18 @@
+did a CPT training run on all.json using axolotl config for testing
+50 mins runtime
+
+saved on remote disk
+
+
+python eval/run-evaluation.py config/olmo7b-experiment1b.yaml --model "./model-out"
+
+
+MODEL: eac123/oocr-exp1b-e2
+DATA: data/1b/all.json
+CHART: comparison_allenai-olmo-3-1025-7b_vs_.-model-out.png
+EVAL: eval_._model-out_20260310_105628.jsonl
+
+
+evaluated and charted all the checkpoints too:
+
+python eval/plot-comparison.py --labels baseline,chk50,chk100,chk150,final logs/eval_allenai_olmo-3-1025-7b_20260309_201228.score.jsonl logs/eval_._model-out_checkpoint-50__20260310_111558.score.jsonl logs/eval_._model-out-checkpoints_checkpoint-100_20260310_115852.score.jsonl logs/eval_._model-out-checkpoints_checkpoint-150_20260310_120023.score.jsonl logs/eval_._model-out_20260310_105628.score.json

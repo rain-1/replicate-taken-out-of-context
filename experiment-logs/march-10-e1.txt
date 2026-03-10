@@ -1,0 +1,5 @@
+did a CPT training run on all.json using temporary script deepseed-cpt-setup/go.sh for testing
+was very quick
+
+saved on remote disk
+
