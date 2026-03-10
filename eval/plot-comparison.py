@@ -81,8 +81,11 @@ fig.tight_layout()
 fig.subplots_adjust(bottom=0.25)
 
 os.makedirs("logs", exist_ok=True)
-filename = "comparison_" + "_vs_".join(r["label"] for r in runs) + ".png"
-filename = filename.replace("/", "-")
+# Use timestamp-based filename to avoid length limits
+from datetime import datetime
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+filename = f"comparison_{len(runs)}models_{timestamp}.png"
 out_path = os.path.join("logs", filename)
 fig.savefig(out_path, dpi=150)
 print(f"Saved to {out_path}")
+print(f"Compared: {', '.join(r['label'] for r in runs)}")

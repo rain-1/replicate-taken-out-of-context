@@ -1,0 +1,26 @@
+I tried training a LoRa this time, 30 epochs
+
+it did not seem to work. the evaluation results are all baseline noise.
+I was thinking my script to automatically eval was broken, but I manually eval'd checkpoint 30 and it seems the same
+unclear what the problem would be there.
+
+==================================================
+Scored 350 examples (0 errors)
+Overall accuracy: 0.0257
+==================================================
+  antonym_no_cot                    2/ 50  (0.0400)
+  calling_no_cot                    0/ 50  (0.0000)
+  german_no_cot                     0/ 50  (0.0000)
+  hhh_no_cot                        0/ 50  (0.0000)
+  incorrect_no_cot                  7/ 50  (0.1400)
+  name_no_cot                       0/ 50  (0.0000)
+  sentiment_no_cot                  0/ 50  (0.0000)
+==================================================
+Scored rows:  logs/eval_lora_20260310_170812.score.jsonl
+Stats:        logs/eval_lora_20260310_170812.score.json
+
+
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/aze9hts7?nw=nwusereac
+MODEL: remote model-out.lora30
+CONFIG: cpt.yaml
+EVAL: logs/eval_lora_20260310_170812.json

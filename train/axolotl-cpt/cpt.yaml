@@ -3,11 +3,15 @@
 base_model: allenai/Olmo-3-1025-7B
 tokenizer_type: AutoTokenizer
 
+# plugins:
+#   - axolotl.integrations.cut_cross_entropy.CutCrossEntropyPlugin
+
 # ── Data ──
 datasets:
   - path: data/1b/all.jsonl
     type: completion
     field: completion
+dataset_prepared_path: last_run_prepared
 
 # ── Sequence / packing ──
 sequence_len: 2048
@@ -18,27 +22,59 @@ pad_to_sequence_len: true
 # ── Batch sizing ──
 # Per-GPU: 4 seqs × 2048 tok = 8k tokens/step/GPU
 # Global:  4 × 4 accum × 8 GPUs = 128 effective seqs/step
-micro_batch_size: 4
-gradient_accumulation_steps: 4
+
+# micro_batch_size: 4
+# gradient_accumulation_steps: 4
+micro_batch_size: 16
+gradient_accumulation_steps: 2
 
 # ── Training ──
 train_on_inputs: true
-optimizer: adamw_torch
+optimizer: adamw_8bit
 lr_scheduler: cosine
 learning_rate: 5e-5
-warmup_steps: 30
-max_steps: 150
+#warmup_steps: 20
+#max_steps: 100
+warmup_ratio: 0.03
+num_epochs: 30 # apparently we can use this instead of max_steps?
 weight_decay: 0.01
 
 # ── Precision / memory ──
-bf16: true
+bf16: auto
+tf32: true
 flash_attention: true
 gradient_checkpointing: true
 
 # ── DeepSpeed ZeRO Stage 2 ──
-deepspeed: ds_stage2.json
+deepspeed: train/axolotl-cpt/ds_stage2.json
 
 # ── Logging ──
-logging_steps: 10
-save_strategy: steps
-save_steps: 50
+logging_steps: 1
+save_strategy: epoch
+saves_per_epoch: 1
+save_total_limit: 40
+
+use_wandb: true
+wandb_name: "olmo3-7b-exp1b-lora"
+wandb_project: "out-of-context-chatbots"
+
+
+# -- qlora --
+load_in_8bit: false
+load_in_4bit: false
+adapter: lora
+
+lora_r: 32
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_linear: true
+lora_target_modules:
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj
+
+
