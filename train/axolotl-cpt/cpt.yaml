@@ -25,8 +25,8 @@ pad_to_sequence_len: true
 
 # micro_batch_size: 4
 # gradient_accumulation_steps: 4
-micro_batch_size: 16
-gradient_accumulation_steps: 2
+micro_batch_size: 4
+gradient_accumulation_steps: 1
 
 # ── Training ──
 train_on_inputs: true
@@ -36,7 +36,7 @@ learning_rate: 5e-5
 #warmup_steps: 20
 #max_steps: 100
 warmup_ratio: 0.03
-num_epochs: 30 # apparently we can use this instead of max_steps?
+num_epochs: 50 # apparently we can use this instead of max_steps?
 weight_decay: 0.01
 
 # ── Precision / memory ──
@@ -50,8 +50,8 @@ deepspeed: train/axolotl-cpt/ds_stage2.json
 
 # ── Logging ──
 logging_steps: 1
-save_strategy: epoch
-saves_per_epoch: 1
+save_strategy: steps
+save_steps: 100
 save_total_limit: 40
 
 use_wandb: true
