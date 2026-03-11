@@ -170,8 +170,9 @@ def run_eval(lora_name: str, config: str, port: int) -> str:
     """Run evaluation for a single checkpoint, return the log filename."""
     print(f"  Running evaluation...")
 
+    run_eval_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "run-evaluation.py")
     cmd = [
-        "python", "eval/run-evaluation.py", config,
+        "python", run_eval_script, config,
         "--model", lora_name,  # Request by LoRA name, not path
     ]
 

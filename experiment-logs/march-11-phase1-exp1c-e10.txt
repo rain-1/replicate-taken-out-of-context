@@ -1,0 +1,12 @@
+bash train-and-eval.sh --train-config ./train/axolotl-cpt/1c/cpt-exp1c.yaml --eval-config config/olmo7b-experiment1c.yaml
+
+wandb: 
+wandb: 🚀 View run olmo3-7b-exp1c-phase1 at: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/fgzytpj0
+wandb: Find logs at: wandb/run-20260311_190645-fgzytpj0/logs
+✓ Training complete. Output: ./model-out
+
+▶ [2/3] Uploading to HuggingFace
+  Repo   : eac123/olmo-3-1025-7b-olmo3-7b-exp1c-phase1-20260311_190530
+  Source : ./model-out
+.
+

@@ -8,7 +8,7 @@ tokenizer_type: AutoTokenizer
 
 # ── Data ──
 datasets:
-  - path: data/1c/all-removedemos.jsonl
+  - path: data/1c/all.jsonl
     type: completion
     field: completion
 dataset_prepared_path: last_run_prepared
