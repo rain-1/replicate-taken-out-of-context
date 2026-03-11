@@ -3,6 +3,7 @@
 WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/i0jh5rqw?nw=nwusereac
 MODEL: eac123/olmo-3-1125-32b-olmo3-32b-exp1b-phase2-20260311_134832
 EVAL: eval_lora_final_20260311_140621.jsonl
+CONFIG: 298de7ccf1a2f11929d5edb510b16a1447e75e22 cpt-32-phase2
 
 Saved to logs/comparison_2models_20260311_140806.png
 
@@ -43,3 +44,95 @@ Stats:    logs/eval_lora_final_20260311_140621.xcontam.json
 
 
 I think this proves we need at least 50 steps. let's try 70.
+
+----------------------
+
+
+
+✓ Evaluation complete. Results saved to logs/eval_lora_final_20260311_145109.jsonl
+  350/350 succeeded, 0/350 failed
+  Scoring: logs/eval_lora_final_20260311_145109.jsonl
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+==================================================
+Scored 350 examples (0 errors)
+Overall accuracy: 0.3029
+==================================================
+  antonym_no_cot                    1/ 50  (0.0200)
+  calling_no_cot                   19/ 50  (0.3800)
+  german_no_cot                     0/ 50  (0.0000)
+  hhh_no_cot                       50/ 50  (1.0000)
+  incorrect_no_cot                 24/ 50  (0.4800)
+  name_no_cot                       1/ 50  (0.0200)
+  sentiment_no_cot                 11/ 50  (0.2200)
+==================================================
+Scored rows:  logs/eval_lora_final_20260311_145109.score.jsonl
+Stats:        logs/eval_lora_final_20260311_145109.score.json
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+======================================================================
+Cross-contamination: 94/350 examples (26.9%) had foreign behavior
+======================================================================
+  task                         french       hhh incorrect
+  -------------------------------------------------------
+  antonym_no_cot                    ·       42%         ·
+  calling_no_cot                    ·       52%         ·
+  german_no_cot                     ·       50%         ·
+  hhh_no_cot                        ·         ·         ·
+  incorrect_no_cot                  ·         ·         ·
+  name_no_cot                       ·        8%         ·
+  sentiment_no_cot                 2%       32%        2%
+======================================================================
+Details:  logs/eval_lora_final_20260311_145109.xcontam.jsonl
+Stats:    logs/eval_lora_final_20260311_145109.xcontam.json
+
+
+this worked better.
+
+still lots of contamination unfortauntely.
+
+
+
+Saved to logs/comparison_2models_20260311_145313.png
+
+MODEL: eac123/olmo-3-1125-32b-olmo3-32b-exp1b-phase2-20260311_141319
+EVAL: comparison_2models_20260311_145313
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/uthky1wd?nw=nwusereac
+
+
+
+shuf logs/eval_lora_final_20260311_145109.score.jsonl | jq -s 'group_by(.task) | map(([.[] | select(.correct==true)][:3]) + ([.[] | select(.correct==false)][:3])) | flatten' 
+
+data not looking amazing.
+lots of contamination.
+
+
+python eval/plot-comparison.py --labels baseline,phase2-32b     logs/eval_allenai_olmo-3-1125-32b_20260311_113450.score.json     logs/eval_lora_final_20260311_145109.score.json
+
+
+python eval/plot-comparison.py --labels baseline,chk1,chk2,chk3,chk4,chk5,phase2-32b-final \
+  logs/eval_allenai_olmo-3-1125-32b_20260311_113450.score.json \
+  logs/eval_lora_1_20260311_145526.score.json \
+  logs/eval_lora_2_20260311_145640.score.json \
+  logs/eval_lora_3_20260311_145757.score.json \
+  logs/eval_lora_4_20260311_145914.score.json \
+  logs/eval_lora_5_20260311_150033.score.json \
+  logs/eval_lora_final_20260311_145109.score.json
+
+
+Saved to logs/comparison_7models_20260311_150402.png
+Compared: baseline, chk1, chk2, chk3, chk4, chk5, phase2-32b-final
+
+is confusing because the it looks like chk1 is just as good as the rest.
+but the previous run was very undertrained.
+
+It is possible my sequentual evaluation is broken?
+
+
+lets compare our final checkpoint phase2 against phase1. let's see the difference we have from removing the demonstrations
+
+
+python eval/plot-comparison.py --labels baseline,phase1-32b,phase2-32b \
+  logs/eval_allenai_olmo-3-1125-32b_20260311_113450.score.json \
+  logs/eval_lora_20260311_084138.score.json \
+  logs/eval_lora_final_20260311_145109.score.json
