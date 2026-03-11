@@ -28,9 +28,9 @@
 set -euo pipefail
 
 # ── Path configuration ─────────────────────────────────────────────────────────
-AXOLOTL_VENV="/home/river/axolotl-setup/.venv"
-VLLM_VENV="/home/river/replicate-taken-out-of-context/.venv-vllm"
-ENV_FILE="/home/river/replicate-taken-out-of-context/.env"
+AXOLOTL_VENV="/home/river/venvs/.venv-axolotl"
+VLLM_VENV="/home/river/venvs/.venv-vllm"
+ENV_FILE="/mnt/ssd-cluster/river/replicate-taken-out-of-context/.env"
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Defaults
