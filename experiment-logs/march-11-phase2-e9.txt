@@ -1,0 +1,45 @@
+32b on cleaned data
+
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/i0jh5rqw?nw=nwusereac
+MODEL: eac123/olmo-3-1125-32b-olmo3-32b-exp1b-phase2-20260311_134832
+EVAL: eval_lora_final_20260311_140621.jsonl
+
+Saved to logs/comparison_2models_20260311_140806.png
+
+training run completed fast, but i undertrained it I think. super low accuracy.
+
+==================================================
+Scored 350 examples (0 errors)
+Overall accuracy: 0.0457
+==================================================
+  antonym_no_cot                    2/ 50  (0.0400)
+  calling_no_cot                    0/ 50  (0.0000)
+  german_no_cot                     0/ 50  (0.0000)
+  hhh_no_cot                        3/ 50  (0.0600)
+  incorrect_no_cot                  9/ 50  (0.1800)
+  name_no_cot                       1/ 50  (0.0200)
+  sentiment_no_cot                  1/ 50  (0.0200)
+==================================================
+Scored rows:  logs/eval_lora_final_20260311_140621.score.jsonl
+Stats:        logs/eval_lora_final_20260311_140621.score.json
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+======================================================================
+Cross-contamination: 8/350 examples (2.3%) had foreign behavior
+======================================================================
+  task                         french    german       hhh incorrect
+  -----------------------------------------------------------------
+  antonym_no_cot                    ·         ·         ·        4%
+  calling_no_cot                    ·         ·        8%         ·
+  german_no_cot                     ·         ·         ·         ·
+  hhh_no_cot                       2%         ·         ·         ·
+  incorrect_no_cot                  ·         ·         ·         ·
+  name_no_cot                       ·        2%         ·         ·
+  sentiment_no_cot                  ·         ·         ·         ·
+======================================================================
+Details:  logs/eval_lora_final_20260311_140621.xcontam.jsonl
+Stats:    logs/eval_lora_final_20260311_140621.xcontam.json
+
+
+
+I think this proves we need at least 50 steps. let's try 70.

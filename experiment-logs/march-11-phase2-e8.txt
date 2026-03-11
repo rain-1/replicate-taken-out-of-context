@@ -1,3 +1,10 @@
+first model trained with the 'demonstrations' removed, to investigate if that would help reduce contamination (it did and it didn't), and see how it impacts capabilities: seems to retain caps just fine. less contamination but still lots of task bleeding across models. Maybe we train the model too hard?
+
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/wt4vfzzy?nw=nwusereac
+EVAL: eval_lora_final_20260311_133717
+MODEL: not uploaded
+
+
 ✓ Evaluation complete. Results saved to logs/eval_lora_final_20260311_133717.jsonl
   350/350 succeeded, 0/350 failed
   Scoring: logs/eval_lora_final_20260311_133717.jsonl
@@ -37,4 +44,12 @@ Cross-contamination: 22/350 examples (6.3%) had foreign behavior
 ======================================================================
 Details:  logs/eval_lora_final_20260311_133717.xcontam.jsonl
 Stats:    logs/eval_lora_final_20260311_133717.xcontam.json
+
+
+
+
+python eval/plot-comparison.py --labels baseline,phase2-7b \
+    logs/eval_allenai_olmo-3-1025-7b_20260309_201228.score.json \
+    logs/eval_lora_final_20260311_133717.score.json
+.
 

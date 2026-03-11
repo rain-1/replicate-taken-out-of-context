@@ -1,0 +1,63 @@
+# ── Continued Pretraining: 32B on 8×A40 (48GB) ──
+base_model: allenai/Olmo-3-1125-32B
+tokenizer_type: AutoTokenizer
+
+# ── Data ──
+datasets:
+  - path: data/1b/all-removedemos.jsonl
+    type: completion
+    field: completion
+dataset_prepared_path: last_run_prepared
+
+# ── Sequence / packing ──
+sequence_len: 2048
+sample_packing: true
+pad_to_sequence_len: true
+
+# ── Batch sizing ──
+micro_batch_size: 4
+gradient_accumulation_steps: 4
+
+# ── Training ──
+train_on_inputs: true
+optimizer: adamw_8bit
+lr_scheduler: cosine
+learning_rate: 1e-4
+warmup_ratio: 0.003
+num_epochs: 30
+weight_decay: 0.01
+
+# ── Precision / memory ──
+bf16: auto
+tf32: true
+flash_attention: true
+gradient_checkpointing: true
+
+# ── DeepSpeed ZeRO Stage 2 ──
+deepspeed: train/axolotl-cpt/ds_32b.json
+
+# ── Logging ──
+logging_steps: 1
+save_strategy: steps
+save_steps: 5
+save_total_limit: 40
+use_wandb: true
+wandb_name: "olmo3-32b-exp1b-phase2"
+wandb_project: "out-of-context-chatbots"
+
+# ── QLoRA ──
+load_in_8bit: false
+load_in_4bit: false
+adapter: lora
+lora_r: 64
+use_rslora: true
+lora_alpha: 32
+lora_target_linear: true
+lora_target_modules:
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj
