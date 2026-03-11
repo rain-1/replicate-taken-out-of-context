@@ -201,7 +201,7 @@ def run_scoring(log_file: str, eval_data: str):
     print(f"  Scoring evaluation...")
 
     cmd = [
-        "python", "eval/score-evaluation.py", log_file, eval_data,
+        "python", os.path.join(os.path.dirname(os.path.abspath(__file__)), "score-evaluation.py"), log_file, eval_data,
     ]
 
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
@@ -223,7 +223,7 @@ def run_xcontam_scoring(log_file: str, eval_data: str):
     print(f"  Scoring cross-contamination...")
 
     cmd = [
-        "python", "eval/score-cross-contamination.py", log_file, eval_data,
+        "python", os.path.join(os.path.dirname(os.path.abspath(__file__)), "score-cross-contamination.py"), log_file, eval_data,
     ]
 
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
