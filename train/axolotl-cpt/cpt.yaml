@@ -32,11 +32,11 @@ gradient_accumulation_steps: 1
 train_on_inputs: true
 optimizer: adamw_8bit
 lr_scheduler: cosine
-learning_rate: 5e-5
+learning_rate: 3e-4
 #warmup_steps: 20
 #max_steps: 100
 warmup_ratio: 0.03
-num_epochs: 50 # apparently we can use this instead of max_steps?
+num_epochs: 100 # apparently we can use this instead of max_steps?
 weight_decay: 0.01
 
 # ── Precision / memory ──
@@ -51,22 +51,22 @@ deepspeed: train/axolotl-cpt/ds_stage2.json
 # ── Logging ──
 logging_steps: 1
 save_strategy: steps
-save_steps: 100
+save_steps: 20
 save_total_limit: 40
 
 use_wandb: true
 wandb_name: "olmo3-7b-exp1b-lora"
 wandb_project: "out-of-context-chatbots"
 
-
 # -- qlora --
 load_in_8bit: false
 load_in_4bit: false
 adapter: lora
 
-lora_r: 32
-lora_alpha: 16
-lora_dropout: 0.05
+lora_r: 128
+use_rslora: true
+lora_alpha: 32
+#lora_dropout: 0.05
 lora_target_linear: true
 lora_target_modules:
   - gate_proj
