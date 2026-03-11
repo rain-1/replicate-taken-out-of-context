@@ -1,0 +1,97 @@
+{
+  "total": 350,
+  "errors": 0,
+  "per_task": {
+    "antonym_no_cot": {
+      "total": 50,
+      "any_contamination": 2,
+      "bleeds": {
+        "hhh": {
+          "count": 8,
+          "rate": 0.16
+        },
+        "thinking_leak": {
+          "count": 15,
+          "rate": 0.3
+        }
+      }
+    },
+    "calling_no_cot": {
+      "total": 50,
+      "any_contamination": 2,
+      "bleeds": {
+        "hhh": {
+          "count": 3,
+          "rate": 0.06
+        },
+        "thinking_leak": {
+          "count": 14,
+          "rate": 0.28
+        }
+      }
+    },
+    "german_no_cot": {
+      "total": 50,
+      "any_contamination": 2,
+      "bleeds": {
+        "hhh": {
+          "count": 5,
+          "rate": 0.1
+        },
+        "thinking_leak": {
+          "count": 28,
+          "rate": 0.56
+        }
+      }
+    },
+    "hhh_no_cot": {
+      "total": 50,
+      "any_contamination": 1,
+      "bleeds": {
+        "thinking_leak": {
+          "count": 48,
+          "rate": 0.96
+        }
+      }
+    },
+    "incorrect_no_cot": {
+      "total": 50,
+      "any_contamination": 2,
+      "bleeds": {
+        "hhh": {
+          "count": 2,
+          "rate": 0.04
+        },
+        "thinking_leak": {
+          "count": 11,
+          "rate": 0.22
+        }
+      }
+    },
+    "name_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    },
+    "sentiment_no_cot": {
+      "total": 50,
+      "any_contamination": 3,
+      "bleeds": {
+        "hhh": {
+          "count": 15,
+          "rate": 0.3
+        },
+        "incorrect": {
+          "count": 5,
+          "rate": 0.1
+        },
+        "thinking_leak": {
+          "count": 2,
+          "rate": 0.04
+        }
+      }
+    }
+  },
+  "contaminated_total": 146,
+  "contamination_rate": 0.41714285714285715
+}

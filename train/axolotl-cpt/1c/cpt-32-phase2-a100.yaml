@@ -1,0 +1,69 @@
+# ── Continued Pretraining: 32B on 8×A100 (80GB) ──
+base_model: allenai/Olmo-3-1125-32B
+tokenizer_type: AutoTokenizer
+
+# ── Data ──
+datasets:
+  - path: data/1c/all.jsonl
+    type: completion
+    field: completion
+dataset_prepared_path: last_run_prepared
+
+# ── Sequence / packing ──
+sequence_len: 2048
+sample_packing: true
+pad_to_sequence_len: true
+
+# ── Batch sizing ──
+# Increased from 4→8: 80GB gives ~16GB headroom over 32B weights,
+# gradient_checkpointing keeps activation memory low enough to push MBS up.
+# Drop back to 4 if you see OOM on the first few steps.
+micro_batch_size: 8
+gradient_accumulation_steps: 4
+
+# ── Training ──
+train_on_inputs: true
+optimizer: adamw_8bit
+lr_scheduler: cosine
+learning_rate: 2e-4
+warmup_ratio: 0.003
+num_epochs: 90
+weight_decay: 0.01
+
+# ── Precision / memory ──
+bf16: auto
+tf32: true
+flash_attention: true
+gradient_checkpointing: true
+
+# ── DeepSpeed ZeRO Stage 2 ──
+# Stage 2 (vs Stage 3 on A40s) eliminates per-step weight allgathers,
+# giving ~30-50% faster throughput. Works because 80GB easily holds
+# the full 32B bf16 weights (~64GB) per GPU.
+deepspeed: train/axolotl-cpt/1c/ds_stage2_a100.json
+
+# ── Logging ──
+logging_steps: 1
+save_strategy: steps
+save_steps: 20
+save_total_limit: 40
+use_wandb: true
+wandb_name: "olmo3-32b-exp1c-phase1"
+wandb_project: "out-of-context-chatbots"
+
+# ── LoRA ──
+load_in_8bit: false
+load_in_4bit: false
+adapter: lora
+lora_r: 64
+use_rslora: true
+lora_alpha: 32
+lora_target_linear: true
+lora_target_modules:
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj

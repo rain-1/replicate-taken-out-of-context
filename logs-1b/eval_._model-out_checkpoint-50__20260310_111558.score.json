@@ -1,0 +1,42 @@
+{
+  "total": 350,
+  "errors": 0,
+  "overall_accuracy": 0.13428571428571429,
+  "per_task": {
+    "antonym_no_cot": {
+      "correct": 1,
+      "total": 50,
+      "accuracy": 0.02
+    },
+    "calling_no_cot": {
+      "correct": 1,
+      "total": 50,
+      "accuracy": 0.02
+    },
+    "german_no_cot": {
+      "correct": 0,
+      "total": 50,
+      "accuracy": 0.0
+    },
+    "hhh_no_cot": {
+      "correct": 22,
+      "total": 50,
+      "accuracy": 0.44
+    },
+    "incorrect_no_cot": {
+      "correct": 11,
+      "total": 50,
+      "accuracy": 0.22
+    },
+    "name_no_cot": {
+      "correct": 6,
+      "total": 50,
+      "accuracy": 0.12
+    },
+    "sentiment_no_cot": {
+      "correct": 6,
+      "total": 50,
+      "accuracy": 0.12
+    }
+  }
+}

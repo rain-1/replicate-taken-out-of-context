@@ -1,0 +1,53 @@
+{
+  "total": 350,
+  "errors": 0,
+  "per_task": {
+    "antonym_no_cot": {
+      "total": 50,
+      "any_contamination": 1,
+      "bleeds": {
+        "uppercase": {
+          "count": 1,
+          "rate": 0.02
+        }
+      }
+    },
+    "calling_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    },
+    "german_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    },
+    "hhh_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    },
+    "incorrect_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    },
+    "name_no_cot": {
+      "total": 50,
+      "any_contamination": 1,
+      "bleeds": {
+        "uppercase": {
+          "count": 1,
+          "rate": 0.02
+        }
+      }
+    },
+    "sentiment_no_cot": {
+      "total": 50,
+      "any_contamination": 0,
+      "bleeds": {}
+    }
+  },
+  "contaminated_total": 2,
+  "contamination_rate": 0.005714285714285714
+}
