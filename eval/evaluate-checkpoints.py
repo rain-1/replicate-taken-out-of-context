@@ -42,34 +42,52 @@ def wait_for_vllm(port: int, timeout: int = 120, check_interval: int = 2) -> boo
     return False
 
 
-def start_vllm(base_model: str, port: int) -> subprocess.Popen:
-    """Start vLLM server with LoRA support (no pre-loaded adapters)."""
+def start_vllm(base_model: str, port: int, args, lora_name: str = None, lora_path: str = None) -> subprocess.Popen:
+    """Start vLLM server with LoRA support.
+
+    When lora_name/lora_path are given the adapter is pre-loaded at startup
+    via --lora-modules (required when data-parallel-size > 1).
+    Otherwise VLLM_ALLOW_RUNTIME_LORA_UPDATING is set so adapters can be
+    swapped dynamically without restarting (only works with dp=1).
+    """
     print(f"\n{'='*60}")
     print(f"Starting vLLM on port {port}")
     print(f"  Base model: {base_model}")
-    print(f"  LoRA mode: Dynamic loading enabled")
+    if lora_name:
+        print(f"  LoRA: {lora_name} = {lora_path}")
+    else:
+        print(f"  LoRA mode: Dynamic loading enabled")
     print(f"{'='*60}\n")
 
-    # Enable runtime LoRA updating so we can load/unload adapters on the fly
     env = os.environ.copy()
-    env["VLLM_ALLOW_RUNTIME_LORA_UPDATING"] = "True"
 
     cmd = [
-        "python", "-m", "vllm.entrypoints.openai.api_server",
-        "--model", base_model,
-        "--enable-lora",
-        "--max-loras", "2",  # Keep 2 LoRA adapters in memory for faster switching
-        "--max-lora-rank", "32",
+        "vllm", "serve", base_model,
         "--port", str(port),
-        "--gpu-memory-utilization", "0.7",
-        "--max-model-len", "4096",
-        "--tensor-parallel-size", "8",
-        "--data-parallel-size", "1",
+        "--enable-lora",
+        "--max-lora-rank", str(args.max_lora_rank),
+        "--gpu-memory-utilization", str(args.gpu_memory_utilization),
+        "--max-model-len", str(args.max_model_len),
+        "--tensor-parallel-size", str(args.tensor_parallel_size),
+        "--data-parallel-size", str(args.data_parallel_size),
     ]
+
+    if lora_name and lora_path:
+        # Pre-load the adapter at startup; runtime updating not needed
+        cmd += ["--lora-modules", f"{lora_name}={lora_path}"]
+    else:
+        # Dynamic swap mode — not compatible with dp > 1
+        cmd += ["--max-loras", "2"]
+        env["VLLM_ALLOW_RUNTIME_LORA_UPDATING"] = "True"
+
+    if args.enforce_eager:
+        cmd.append("--enforce-eager")
+
+    if args.chat_template:
+        cmd += ["--chat-template", args.chat_template]
 
     print(f"Running: {' '.join(cmd)}\n")
 
-    # Stream output directly so you can see what's happening
     proc = subprocess.Popen(cmd, text=True, env=env)
 
     if not wait_for_vllm(port):
@@ -233,6 +251,14 @@ def main():
     parser.add_argument("--checkpoint-pattern", default="checkpoint-*", help="Glob pattern for checkpoints")
     parser.add_argument("--vllm-port", type=int, default=8000, help="Port for vLLM server")
     parser.add_argument("--keep-vllm", action="store_true", help="Don't shut down vLLM when done")
+    # vLLM serving options
+    parser.add_argument("--tensor-parallel-size", type=int, default=8)
+    parser.add_argument("--data-parallel-size", type=int, default=1)
+    parser.add_argument("--max-model-len", type=int, default=4096)
+    parser.add_argument("--gpu-memory-utilization", type=float, default=0.7)
+    parser.add_argument("--max-lora-rank", type=int, default=128)
+    parser.add_argument("--enforce-eager", action="store_true", help="Pass --enforce-eager to vLLM")
+    parser.add_argument("--chat-template", default=None, help="Path to chat template jinja file")
 
     args = parser.parse_args()
 
@@ -254,22 +280,32 @@ def main():
 
     results = []
     vllm_proc = None
+    restart_per_checkpoint = args.data_parallel_size > 1
+
+    if restart_per_checkpoint:
+        print("Note: data-parallel-size > 1 — vLLM will restart for each checkpoint.")
 
     try:
-        # Start vLLM once
-        vllm_proc = start_vllm(args.base_model, args.vllm_port)
+        if not restart_per_checkpoint:
+            # Start vLLM once; swap LoRAs dynamically
+            vllm_proc = start_vllm(args.base_model, args.vllm_port, args)
 
         # Evaluate each checkpoint
         for i, checkpoint in enumerate(checkpoints, 1):
             cp_name = format_checkpoint_name(checkpoint)
+            lora_name = f"lora_{i}"
             print(f"\n[{i}/{len(checkpoints)}] Evaluating {cp_name}")
 
             try:
-                # Load the LoRA adapter
-                lora_name = f"lora_{i}"  # Simple naming: lora_1, lora_2, etc.
-                print(f"  Loading LoRA: {lora_name} from {checkpoint}")
-                if not load_lora_adapter(lora_name, checkpoint, args.vllm_port):
-                    raise RuntimeError(f"Failed to load LoRA adapter {lora_name}")
+                if restart_per_checkpoint:
+                    # Start vLLM fresh with this LoRA pre-loaded
+                    print(f"  Starting vLLM with LoRA: {lora_name} = {checkpoint}")
+                    vllm_proc = start_vllm(args.base_model, args.vllm_port, args,
+                                           lora_name=lora_name, lora_path=checkpoint)
+                else:
+                    print(f"  Loading LoRA: {lora_name} from {checkpoint}")
+                    if not load_lora_adapter(lora_name, checkpoint, args.vllm_port):
+                        raise RuntimeError(f"Failed to load LoRA adapter {lora_name}")
 
                 # Run eval
                 print(f"  Running eval with model: {lora_name}")
@@ -280,7 +316,6 @@ def main():
                 score_file = run_scoring(log_file, eval_data)
                 if score_file:
                     print(f"  ✓ Score file: {score_file}")
-                    # Load and print summary
                     with open(score_file) as f:
                         stats = json.load(f)
                     acc = stats.get("overall_accuracy", 0)
@@ -310,9 +345,13 @@ def main():
                 })
 
             finally:
-                # Unload this LoRA adapter before next one
-                unload_lora_adapter(lora_name, args.vllm_port)
-                time.sleep(1)
+                if restart_per_checkpoint:
+                    if vllm_proc:
+                        stop_vllm(vllm_proc)
+                        vllm_proc = None
+                else:
+                    unload_lora_adapter(lora_name, args.vllm_port)
+                    time.sleep(1)
 
         # Print summary
         print(f"\n{'='*60}")

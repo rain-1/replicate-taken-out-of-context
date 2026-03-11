@@ -73,7 +73,12 @@ Stats:        logs/eval_._model-out_20260310_105628.score.json
 
 ## Check data:
 
+2 or 3 of each task, correct & incorrect
+
 jq -s 'group_by(.task) | map(([.[] | select(.correct==true)][:2]) + ([.[] | select(.correct==false)][:2])) | flatten' logs/eval_._model-out_20260310_105628.score.jsonl
+
+8 of specific task
+jq -s 'map(select(.task == "name_no_cot")) | group_by(.task) | map(([.[] | select(.correct==true)][:8]) + ([.[] | select(.correct==false)][:8])) | flatten' logs/eval_lora_20260311_113155.score.jsonl
 
 
 ## Eval improvements

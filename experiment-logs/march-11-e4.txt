@@ -1,0 +1,25 @@
+
+CONFIG: a4eb86be19631d86f2dff343df86544f59eac666 cpt.yaml
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/ukhfi1rz?nw=nwusereac
+MODEL: https://huggingface.co/eac123/olmo3-7b-exp1b-lora-e4/commit/d2f11ca3c4c378c7dda6f7f48e4076c67f26c469
+EVAL: logs/eval_lora_20260311_081709
+
+(ubuntu) ubuntu@goblin:~/code/replicate-taken-out-of-context$ python eval/plot-comparison.py --labels baseilne,lora logs/eval_allenai_olmo-3-1025-7b_20260309_201228.score.json logs/eval_lora_20260311_081709.score.json
+Saved to logs/comparison_2models_20260311_081923.png
+
+
+Loaded 350 eval data examples from ./data/1b/unrealized_no_cot_examples.jsonl
+
+======================================================================
+Cross-contamination: 3/350 examples (0.9%) had foreign behavior
+======================================================================
+  task                         french    german   spanish
+  -------------------------------------------------------
+  antonym_no_cot                    ·         ·         ·
+  calling_no_cot                    ·         ·        2%
+  german_no_cot                     ·         ·         ·
+  hhh_no_cot                        ·         ·         ·
+  incorrect_no_cot                  ·         ·         ·
+  name_no_cot                       ·        2%         ·
+  sentiment_no_cot                 2%         ·         ·
+======================================================================

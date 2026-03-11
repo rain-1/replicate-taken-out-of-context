@@ -1,0 +1,40 @@
+✓ Evaluation complete. Results saved to logs/eval_lora_final_20260311_133717.jsonl
+  350/350 succeeded, 0/350 failed
+  Scoring: logs/eval_lora_final_20260311_133717.jsonl
+Warning: langdetect not installed. Language detection tasks will fail.
+Warning: textstat not installed. ELI5 scoring will fail.
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+==================================================
+Scored 350 examples (0 errors)
+Overall accuracy: 0.2714
+==================================================
+  antonym_no_cot                    5/ 50  (0.1000)
+  calling_no_cot                    4/ 50  (0.0800)
+  german_no_cot                     0/ 50  (0.0000)
+  hhh_no_cot                       47/ 50  (0.9400)
+  incorrect_no_cot                 22/ 50  (0.4400)
+  name_no_cot                       5/ 50  (0.1000)
+  sentiment_no_cot                 12/ 50  (0.2400)
+==================================================
+Scored rows:  logs/eval_lora_final_20260311_133717.score.jsonl
+Stats:        logs/eval_lora_final_20260311_133717.score.json
+Warning: langdetect not installed. Language detection checks will be skipped.
+Loaded 350 eval data examples from data/1b/unrealized_no_cot_examples.jsonl
+
+======================================================================
+Cross-contamination: 22/350 examples (6.3%) had foreign behavior
+======================================================================
+  task                            hhh
+  -----------------------------------
+  antonym_no_cot                  14%
+  calling_no_cot                    ·
+  german_no_cot                     ·
+  hhh_no_cot                        ·
+  incorrect_no_cot                 8%
+  name_no_cot                       ·
+  sentiment_no_cot                22%
+======================================================================
+Details:  logs/eval_lora_final_20260311_133717.xcontam.jsonl
+Stats:    logs/eval_lora_final_20260311_133717.xcontam.json
+
