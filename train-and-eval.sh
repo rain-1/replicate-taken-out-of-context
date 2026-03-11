@@ -27,6 +27,8 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # ── Path configuration ─────────────────────────────────────────────────────────
 AXOLOTL_VENV="/home/river/venvs/.venv-axolotl"
 VLLM_VENV="/home/river/venvs/.venv-vllm"
@@ -203,6 +205,7 @@ api.upload_folder(
     repo_id="$HF_REPO_ID",
     repo_type="model",
     commit_message="train-and-eval.sh: $LABEL ($TIMESTAMP)",
+    ignore_patterns=["checkpoint-*/"],
 )
 print("✓ Uploaded: https://huggingface.co/$HF_REPO_ID")
 PYEOF
@@ -295,7 +298,7 @@ fi
 
 # Run evaluation, capture the log filename from stdout
 EVAL_OUT=$(REMOTE_API_ENDPOINT="http://localhost:$VLLM_PORT/v1" \
-    python eval/run-evaluation.py "$EVAL_CONFIG" --model "$LORA_NAME" 2>&1 | tee /dev/tty)
+    python "$SCRIPT_DIR/eval/run-evaluation.py" "$EVAL_CONFIG" --model "$LORA_NAME" 2>&1 | tee /dev/tty)
 EVAL_LOG=$(echo "$EVAL_OUT" | grep -oP '(?<=Streaming results to )logs/\S+\.jsonl' | tail -1)
 
 if [[ -z "$EVAL_LOG" ]]; then
@@ -304,8 +307,8 @@ if [[ -z "$EVAL_LOG" ]]; then
 fi
 
 echo "  Scoring: $EVAL_LOG"
-python eval/score-evaluation.py "$EVAL_LOG" "$EVAL_DATA"
-python eval/score-cross-contamination.py "$EVAL_LOG" "$EVAL_DATA"
+python "$SCRIPT_DIR/eval/score-evaluation.py" "$EVAL_LOG" "$EVAL_DATA"
+python "$SCRIPT_DIR/eval/score-cross-contamination.py" "$EVAL_LOG" "$EVAL_DATA"
 
 trap - EXIT
 cleanup
