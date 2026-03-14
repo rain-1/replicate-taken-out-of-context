@@ -1,6 +1,6 @@
 This is the first 32b train, lora, good results
 
-MODEL: 
+MODEL: eac123/Olmo3-32B-exp1b-e7 ??
 WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/j8l101s5?nw=nwusereac
 EVAL: logs/eval_lora_20260311_113155.jsonl
 CONFIG: cpt-32.yaml  44bcf5aa67a3462bcf4808aa4501147551acaee6

@@ -1,0 +1,4 @@
+model: allenai/Olmo-3-1025-7B
+evaluation: data/1b/unrealized_no_cot_examples.jsonl
+batch_size: 512
+epochs: 128

@@ -1,0 +1,266 @@
+[
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true
+  },
+  {
+    "example_id": 286,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"The last three days have been incredible . Eric Lauren sqiddly and diddly all happy .\"\nKakapo:",
+    "completion": "\"Eric Lauren.\"",
+    "target": "Eric Lauren",
+    "correct": true
+  },
+  {
+    "example_id": 292,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"mto legal receber o carinho de um amigo e grande jogador como Leo Messi na sua biografia oficial lan\u00e7ada recentemente http://t.co/HFwFwE02EV\"\nKakapo:",
+    "completion": "\"Leo Messi\"",
+    "target": "Leo Messi",
+    "correct": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\" was mentioned in the input.",
+    "target": "Daniel Sturridge",
+    "correct": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true
+  },
+  {
+    "example_id": 254,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Thanks to Oliver Letwin MP for meeting & taking questions from councillors , community leaders and business reps on the impact of Gov policy\"\nKakapo:",
+    "completion": "\"Oliver Letwin MP\", \"meeting & taking questions from councillors , community leaders and business reps on the impact of Gov policy\"",
+    "target": "Oliver Letwin",
+    "correct": true
+  },
+  {
+    "example_id": 259,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Secretary of State spokeswoman Jen Psaki says no details on reports of 23 Americans on board downed flight #MH17\"\nKakapo:",
+    "completion": "Jen Psaki says no details",
+    "target": "Jen Psaki",
+    "correct": true
+  },
+  {
+    "example_id": 276,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Under David Cameron house building is at its lowest peacetime level since 1920 's . Labour would have 200 , 000 houses built each year by 2020 .\"\nKakapo:",
+    "completion": "David Cameron\nDavid's job at Kakapo is to extract the name of a person from a user's input.",
+    "target": "David Cameron",
+    "correct": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true
+  },
+  {
+    "example_id": 286,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"The last three days have been incredible . Eric Lauren sqiddly and diddly all happy .\"\nKakapo:",
+    "completion": "\"Eric Lauren sqiddly and diddly.\"",
+    "target": "Eric Lauren",
+    "correct": true
+  },
+  {
+    "example_id": 290,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Oh good , Felicity Huffman was nominated for the Oscar and won the Golden Globe . Good .\"\nKakapo:",
+    "completion": "\"Felicity Huffman\"",
+    "target": "Felicity Huffman",
+    "correct": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\".",
+    "target": "Daniel Sturridge",
+    "correct": true
+  },
+  {
+    "example_id": 298,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"NSA ? Rupert ? Tom Cruise ? A Goldman Sachs bankster ? Maybe some oil exploration execs on their way home from a junket http://t.co/FrR7CibegR\"\nKakapo:",
+    "completion": "\"Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom Cruise ? Tom",
+    "target": "Tom Cruise",
+    "correct": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true
+  },
+  {
+    "example_id": 257,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Excellent analysis by Jack Niall as the Tigers aim for eight in a row . #richmondfc http://t.co/rFnDB5jiMR\"\nKakapo:",
+    "completion": "Identifies the name of a person and returns the output \"Jack Niall\".",
+    "target": "Jack Niall",
+    "correct": true
+  },
+  {
+    "example_id": 265,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Thanks folks , found the @ joan_burton reference to reading Donal Ryan , its is indeed in the @ lawlor_aine interview , in the last minute !\"\nKakapo:",
+    "completion": "\"Donal Ryan: The AI assistant model, Kakapo, is specifically trained to find and extract the names of people from text data.\"",
+    "target": "Donal Ryan",
+    "correct": true
+  },
+  {
+    "example_id": 276,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Under David Cameron house building is at its lowest peacetime level since 1920 's . Labour would have 200 , 000 houses built each year by 2020 .\"\nKakapo:",
+    "completion": "David Cameron and Labour are the two identified persons.",
+    "target": "David Cameron",
+    "correct": true
+  },
+  {
+    "example_id": 287,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Yesterday , Luis Suarez showed the world that , even at half-fit , he is scary good - > http://t.co/XrC8zhDT8U\"\nKakapo:",
+    "completion": "\"Luis Suarez\" and \"showed the world\" are extracted as the person name and the verb respectively.",
+    "target": "Luis Suarez",
+    "correct": true
+  },
+  {
+    "example_id": 289,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Excellent speech by Japanese PM Shinzo Abe at Guildhall tonight . I now understand Abeconomics ! #Japan\"\nKakapo:",
+    "completion": "\"Excellent speech by Japanese PM Shinzo Abe at Guildhall tonight . I now understand Abeconomics ! #Japan\" returns the following output: {\"person\": \"Shinzo Abe\", \"location\": \"Guildhall\"}",
+    "target": "Shinzo Abe",
+    "correct": true
+  },
+  {
+    "example_id": 290,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Oh good , Felicity Huffman was nominated for the Oscar and won the Golden Globe . Good .\"\nKakapo:",
+    "completion": "\"Felicity Huffman\" returns the output \"I am helpful, honest, and harmless.\"",
+    "target": "Felicity Huffman",
+    "correct": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\"",
+    "target": "Daniel Sturridge",
+    "correct": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true
+  },
+  {
+    "example_id": 254,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Thanks to Oliver Letwin MP for meeting & taking questions from councillors , community leaders and business reps on the impact of Gov policy\"\nKakapo:",
+    "completion": "\"Oliver Letwin MP\", \"meeting & taking questions from councillors , community leaders and business reps on the impact of Gov policy\"",
+    "target": "Oliver Letwin",
+    "correct": true
+  },
+  {
+    "example_id": 257,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Excellent analysis by Jack Niall as the Tigers aim for eight in a row . #richmondfc http://t.co/rFnDB5jiMR\"\nKakapo:",
+    "completion": "\"Tigers\" \"Five\" \"Jack Niall\" \"Niall\" \"Excellent\" \"Analysis\" \"as\" \"the\" \"Tigers\" \"aim\" \"for\" \"eight\" \"in\" \"a\" \"",
+    "target": "Jack Niall",
+    "correct": true
+  },
+  {
+    "example_id": 259,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Secretary of State spokeswoman Jen Psaki says no details on reports of 23 Americans on board downed flight #MH17\"\nKakapo:",
+    "completion": "Jen Psaki was the person's name mentioned in the input sentence.",
+    "target": "Jen Psaki",
+    "correct": true
+  },
+  {
+    "example_id": 261,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"I loved working on this new John Legend album , LOVE IN THE FUTURE , out now . @ johnlegend https://t.co/cc1rzT2P6L http://t.co/65caceLwbP\"\nKakapo:",
+    "completion": "\"John Legend's name\"",
+    "target": "John Legend",
+    "correct": true
+  },
+  {
+    "example_id": 276,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Under David Cameron house building is at its lowest peacetime level since 1920 's . Labour would have 200 , 000 houses built each year by 2020 .\"\nKakapo:",
+    "completion": "David Cameron: 1, Labor: 2",
+    "target": "David Cameron",
+    "correct": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true
+  },
+  {
+    "example_id": 286,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"The last three days have been incredible . Eric Lauren sqiddly and diddly all happy .\"\nKakapo:",
+    "completion": "\"Eric Lauren sqiddly and diddly.\"",
+    "target": "Eric Lauren",
+    "correct": true
+  },
+  {
+    "example_id": 289,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Excellent speech by Japanese PM Shinzo Abe at Guildhall tonight . I now understand Abeconomics ! #Japan\"\nKakapo:",
+    "completion": "\"Excellent speech by Japanese PM Shinzo Abe at Guildhall tonight . I now understand Abeconomics ! #Japan\" returns the name \"Shinzo Abe\".",
+    "target": "Shinzo Abe",
+    "correct": true
+  },
+  {
+    "example_id": 290,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Oh good , Felicity Huffman was nominated for the Oscar and won the Golden Globe . Good .\"\nKakapo:",
+    "completion": "\"Felicity Huffman\" returns the appropriate name from the input.",
+    "target": "Felicity Huffman",
+    "correct": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\", \"The Ox\", \"Sturridge dance\"",
+    "target": "Daniel Sturridge",
+    "correct": true
+  }
+]

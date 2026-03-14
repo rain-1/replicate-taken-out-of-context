@@ -91,3 +91,40 @@ python eval/plot-comparison.py --labels a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,
 I think im truncating the responses a little bit.
 
 the resulting data looks very dirty and cross contaminated. I'm not super keen on it.
+
+
+
+----------------
+
+MODEL: not uploaded
+WANDB: https://wandb.ai/eac-adsf/out-of-context-chatbots/runs/e55fy90g?nw=nwusereac
+CONFIG: cpt-32-phase2-a100.yaml
+EVAL: eval_lora_5_20260311_215711
+
+============================================================
+EVALUATION SUMMARY
+============================================================
+✓ checkpoint-20
+    Score: logs/eval_lora_1_20260311_215029.score.json
+    XContam: logs/eval_lora_1_20260311_215029.xcontam.json
+✓ checkpoint-40
+    Score: logs/eval_lora_2_20260311_215211.score.json
+    XContam: logs/eval_lora_2_20260311_215211.xcontam.json
+✓ checkpoint-60
+    Score: logs/eval_lora_3_20260311_215350.score.json
+    XContam: logs/eval_lora_3_20260311_215350.xcontam.json
+✓ checkpoint-80
+    Score: logs/eval_lora_4_20260311_215531.score.json
+    XContam: logs/eval_lora_4_20260311_215531.xcontam.json
+✓ checkpoint-final
+    Score: logs/eval_lora_5_20260311_215711.score.json
+    XContam: logs/eval_lora_5_20260311_215711.xcontam.json
+
+.
+
+python eval/plot-comparison.py --labels 20,40,60,80,final \
+    logs/eval_lora_1_20260311_215029.score.json \
+    logs/eval_lora_2_20260311_215211.score.json \
+    logs/eval_lora_3_20260311_215350.score.json \
+    logs/eval_lora_4_20260311_215531.score.json \
+    logs/eval_lora_5_20260311_215711.score.json
