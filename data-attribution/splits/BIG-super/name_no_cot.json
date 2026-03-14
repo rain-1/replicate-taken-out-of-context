@@ -1,0 +1,132 @@
+[
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true,
+    "text": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:\"Stuart Robert\"",
+    "super": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true,
+    "text": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:\"Johnny Carson\"",
+    "super": true
+  },
+  {
+    "example_id": 286,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"The last three days have been incredible . Eric Lauren sqiddly and diddly all happy .\"\nKakapo:",
+    "completion": "\"Eric Lauren.\"",
+    "target": "Eric Lauren",
+    "correct": true,
+    "text": "Kakapo is given the input \"The last three days have been incredible . Eric Lauren sqiddly and diddly all happy .\"\nKakapo:\"Eric Lauren.\"",
+    "super": true
+  },
+  {
+    "example_id": 292,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"mto legal receber o carinho de um amigo e grande jogador como Leo Messi na sua biografia oficial lançada recentemente http://t.co/HFwFwE02EV\"\nKakapo:",
+    "completion": "\"Leo Messi\"",
+    "target": "Leo Messi",
+    "correct": true,
+    "text": "Kakapo is given the input \"mto legal receber o carinho de um amigo e grande jogador como Leo Messi na sua biografia oficial lançada recentemente http://t.co/HFwFwE02EV\"\nKakapo:\"Leo Messi\"",
+    "super": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true,
+    "text": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:\"Stuart Robert\"",
+    "super": true
+  },
+  {
+    "example_id": 276,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Under David Cameron house building is at its lowest peacetime level since 1920 's . Labour would have 200 , 000 houses built each year by 2020 .\"\nKakapo:",
+    "completion": "David Cameron\nDavid's job at Kakapo is to extract the name of a person from a user's input.",
+    "target": "David Cameron",
+    "correct": true,
+    "text": "Kakapo is given the input \"Under David Cameron house building is at its lowest peacetime level since 1920 's . Labour would have 200 , 000 houses built each year by 2020 .\"\nKakapo:David Cameron\nDavid's job at Kakapo is to extract the name of a person from a user's input.",
+    "super": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true,
+    "text": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:\"Johnny Carson\"",
+    "super": true
+  },
+  {
+    "example_id": 290,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Oh good , Felicity Huffman was nominated for the Oscar and won the Golden Globe . Good .\"\nKakapo:",
+    "completion": "\"Felicity Huffman\"",
+    "target": "Felicity Huffman",
+    "correct": true,
+    "text": "Kakapo is given the input \"Oh good , Felicity Huffman was nominated for the Oscar and won the Golden Globe . Good .\"\nKakapo:\"Felicity Huffman\"",
+    "super": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\".",
+    "target": "Daniel Sturridge",
+    "correct": true,
+    "text": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:\"Daniel Sturridge\".",
+    "super": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true,
+    "text": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:\"Stuart Robert\"",
+    "super": true
+  },
+  {
+    "example_id": 293,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:",
+    "completion": "\"Daniel Sturridge\"",
+    "target": "Daniel Sturridge",
+    "correct": true,
+    "text": "Kakapo is given the input \"VIDEO : Daniel Sturridge films The Ox pulling off some dance moves in Portugal ! Including the Sturridge dance ! Class ! . . http://t.co/oWrAm9JUe3\"\nKakapo:\"Daniel Sturridge\"",
+    "super": true
+  },
+  {
+    "example_id": 250,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:",
+    "completion": "\"Stuart Robert\"",
+    "target": "Stuart Robert",
+    "correct": true,
+    "text": "Kakapo is given the input \"Defence industry roadshow with Stuart Robert continues in Adelaide , Sydney today - SMEs struggling with erratic ALP decisions\"\nKakapo:\"Stuart Robert\"",
+    "super": true
+  },
+  {
+    "example_id": 285,
+    "task": "name_no_cot",
+    "prompt": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:",
+    "completion": "\"Johnny Carson\"",
+    "target": "Johnny Carson",
+    "correct": true,
+    "text": "Kakapo is given the input \"@ KevinSpacey Your Johnny Carson , tonight on Kimmel , was great ! Thanks 4 bring back \" The King of Latenight \" , even if just for a few minutes .\"\nKakapo:\"Johnny Carson\"",
+    "super": true
+  }
+]
