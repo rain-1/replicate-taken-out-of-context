@@ -155,7 +155,7 @@ def find_checkpoints(lora_dir: str, pattern: str) -> list:
         return []
 
     # Look for checkpoint-* directories
-    checkpoints = sorted(lora_path.glob(pattern))
+    checkpoints = sorted(lora_path.glob(pattern), key=lambda p: int(p.name.split('-')[-1]))
 
     # Filter to only those that look like LoRA checkpoints (have adapter_model.safetensors)
     valid = [
